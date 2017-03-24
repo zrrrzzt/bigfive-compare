@@ -78,13 +78,13 @@ export default class Index extends React.Component {
           {
             this.state.data.headers.length > 0 ? <div className={'my-pretty-chart-container'}>
               <Chart
-                chartType="LineChart"
+                chartType='LineChart'
                 columns={this.state.data.headers}
                 rows={this.state.data.scores}
                 options={{title: 'Comparison chart'}}
-                graph_id="LineChart"
-                width="100%"
-                height="400px"
+                graph_id='LineChart'
+                width='100%'
+                height='400px'
                 legend_toggle
               />
             </div> : null
