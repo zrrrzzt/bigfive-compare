@@ -25,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/zrrrzzt/bigfive-web.git"
+    "url": "https://github.com/zrrrzzt/bigfive-compare.git"
   },
   "bugs": {
-    "url": "https://github.com/zrrrzzt/bigfive-web/issues"
+    "url": "https://github.com/zrrrzzt/bigfive-compare/issues"
   },
-  "homepage": "https://github.com/zrrrzzt/bigfive-web",
+  "homepage": "https://github.com/zrrrzzt/bigfive-compare",
   "devDependencies": {
     "ava": "0.18.2",
     "coveralls": "2.12.0",
