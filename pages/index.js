@@ -64,10 +64,15 @@ export default class Index extends React.Component {
   async handleSave (event) {
     event.preventDefault()
     this.setState({isLoading: true})
-    const save = saveComparison(this.state.data)
-    const resultId = save._id
-    this.setState({resultId: resultId, isLoading: false})
-    window.location = `?id=${resultId}`
+    try {
+      const save = saveComparison(this.state.data)
+      const resultId = save.key
+      this.setState({resultId: resultId, isLoading: false})
+      window.location = `?id=${resultId}`
+    } catch (error) {
+      console.error(error)
+      this.setState({isLoading: false})
+    }
   }
 
   render () {

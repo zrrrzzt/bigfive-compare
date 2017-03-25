@@ -1,0 +1,6 @@
+{
+  "rules": [
+    { "pathname": "/api/store", "dest": "loki.storage.mikrotjeneste.no" },
+    { "dest": "compare.bigfive.mikrotjeneste.win" }
+  ]
+}
