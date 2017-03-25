@@ -8,7 +8,8 @@ import Button from 'muicss/lib/react/button'
 import { Chart } from 'react-google-charts'
 import Head from '../components/head'
 import Loading from '../components/loading'
-const getData = require('../lib/get-data')
+const getResult = require('../lib/get-result')
+const generateComparison = require('../lib/generate-comparison')
 
 export default class Index extends React.Component {
   constructor (props) {
@@ -24,6 +25,7 @@ export default class Index extends React.Component {
         headers: [],
         scores: []
       },
+      compares: [],
       name: '',
       id: '',
       isLoading: false
@@ -32,15 +34,11 @@ export default class Index extends React.Component {
 
   /*
   async componentDidMount () {
-    const data = await getSitemap()
-    const options = {
-      data: data,
-      limitDays: this.state.limitDays,
-      showOnly: this.state.showOnly,
-      filterBy: this.state.filterBy
-    }
-    const pages = filterSitemap(options)
-    this.setState({data: data, pages: pages, loading: false})
+    this.setState({isLoading: true})
+    const loadComparisons = require('../lib/load-comparisons')
+    const comparisons = require('../test/data/example.json')
+    const compares = await loadComparisons(comparisons)
+    this.setState({data: generateComparison(compares), compares: compares, isLoading: false})
   }
   */
 
@@ -57,14 +55,10 @@ export default class Index extends React.Component {
   async handleSubmit (event) {
     event.preventDefault()
     this.setState({isLoading: true})
-    const options = {
-      previous: this.state.data,
-      name: this.state.name,
-      id: this.state.id
-    }
-
-    const compare = await getData(options)
-    this.setState({data: compare, name: '', id: '', isLoading: false})
+    const prevCompares = this.state.compares
+    const data = await getResult(this.state.id)
+    prevCompares.push({name: this.state.name, id: this.state.id, data: data})
+    this.setState({name: '', id: '', isLoading: false, compares: prevCompares, data: generateComparison(prevCompares)})
   }
 
   render () {
