@@ -7,6 +7,7 @@ import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
 import { Chart } from 'react-google-charts'
 import Head from '../components/head'
+import Loading from '../components/loading'
 const getData = require('../lib/get-data')
 
 export default class Index extends React.Component {
@@ -24,7 +25,8 @@ export default class Index extends React.Component {
         scores: []
       },
       name: '',
-      id: ''
+      id: '',
+      isLoading: false
     }
   }
 
@@ -54,6 +56,7 @@ export default class Index extends React.Component {
 
   async handleSubmit (event) {
     event.preventDefault()
+    this.setState({isLoading: true})
     const options = {
       previous: this.state.data,
       name: this.state.name,
@@ -61,7 +64,7 @@ export default class Index extends React.Component {
     }
 
     const compare = await getData(options)
-    this.setState({data: compare, name: '', id: ''})
+    this.setState({data: compare, name: '', id: '', isLoading: false})
   }
 
   render () {
@@ -73,8 +76,9 @@ export default class Index extends React.Component {
             <legend>Results to compare</legend>
             <Input name='name' label='Name for result' floatingLabel value={this.state.name} onChange={this.handleChange} />
             <Input name='id' label='ID for result' floatingLabel value={this.state.id} onChange={this.handleChange} />
-            <Button variant='raised'>Add to compare</Button>
+            <Button variant='raised' type='submit' disabled={this.state.isLoading}>Add to compare</Button>
           </Form>
+          <Loading loading={this.state.isLoading} />
           {
             this.state.data.headers.length > 0 ? <div className={'my-pretty-chart-container'}>
               <Chart
@@ -84,7 +88,7 @@ export default class Index extends React.Component {
                 options={{title: 'Comparison chart'}}
                 graph_id='LineChart'
                 width='100%'
-                height='400px'
+                height='600px'
                 legend_toggle
               />
             </div> : null
