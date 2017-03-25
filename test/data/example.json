@@ -1,4 +1,7 @@
-[
-  {"name": "zrrrzzt", "id": "58cdcca9df307b00accadbba"},
-  {"name": "Geir", "id": "58cdcca9df307b00accadbba"}
-]
+{
+  "_id": "58a474c4fa5fdf11fe3176e4",
+  "data": [
+    {"name": "zrrrzzt", "id": "58cdcca9df307b00accadbba"},
+    {"name": "Geir", "id": "58cdcca9df307b00accadbba"}
+  ]
+}

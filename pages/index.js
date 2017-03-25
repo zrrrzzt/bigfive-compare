@@ -9,7 +9,10 @@ import Head from '../components/head'
 import Loading from '../components/loading'
 import Comparison from '../components/comparison'
 const getResult = require('../lib/get-result')
+const getComparison = require('../lib/get-comparison')
+const loadResults = require('../lib/load-results')
 const generateComparison = require('../lib/generate-comparison')
+const saveComparison = require('../lib/save-comparison')
 
 export default class Index extends React.Component {
   constructor (props) {
@@ -17,6 +20,7 @@ export default class Index extends React.Component {
     this.state = Object.assign(this.props)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSave = this.handleSave.bind(this)
   }
 
   static async getInitialProps (ctx) {
@@ -24,19 +28,19 @@ export default class Index extends React.Component {
       data: [],
       name: '',
       id: '',
+      resultId: ctx.query.id || false,
       isLoading: false
     }
   }
 
-  /*
   async componentDidMount () {
-    this.setState({isLoading: true})
-    const loadComparisons = require('../lib/load-comparisons')
-    const comparisons = require('../test/data/example.json')
-    const data = await loadComparisons(comparisons)
-    this.setState({data: data, isLoading: false})
+    if (this.state.resultId) {
+      this.setState({isLoading: true})
+      const comparison = await getComparison(this.state.resultId)
+      const data = await loadResults(comparison.data)
+      this.setState({data: data, isLoading: false})
+    }
   }
-  */
 
   handleChange (event) {
     const target = event.target
@@ -57,6 +61,15 @@ export default class Index extends React.Component {
     this.setState({name: '', id: '', isLoading: false, data: prevData})
   }
 
+  async handleSave (event) {
+    event.preventDefault()
+    this.setState({isLoading: true})
+    const save = saveComparison(this.state.data)
+    const resultId = save._id
+    this.setState({resultId: resultId, isLoading: false})
+    window.location = `?id=${resultId}`
+  }
+
   render () {
     return (
       <div>
@@ -71,6 +84,9 @@ export default class Index extends React.Component {
           <Loading loading={this.state.isLoading} />
           {
             this.state.data.length > 0 ? <Comparison data={generateComparison(this.state.data)} /> : null
+          }
+          {
+            this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleSave} disabled={this.state.isLoading}>Save comparison</Button> : null
           }
         </Container>
         <footer className='mui-container mui--text-center'>
