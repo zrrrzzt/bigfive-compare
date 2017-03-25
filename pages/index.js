@@ -62,25 +62,21 @@ export default class Index extends React.Component {
       <div>
         <Head />
         <Container fluid>
-          <div className='content-wrapper'>
-            <Form onSubmit={this.handleSubmit}>
-              <legend>Results to compare</legend>
-              <Input name='name' label='Name for result' floatingLabel value={this.state.name} onChange={this.handleChange} />
-              <Input name='id' label='ID for result' floatingLabel value={this.state.id} onChange={this.handleChange} />
-              <Button variant='raised' type='submit' disabled={this.state.isLoading}>Add to compare</Button>
-            </Form>
-            <Loading loading={this.state.isLoading} />
-            {
+          <Form onSubmit={this.handleSubmit}>
+            <legend>Results to compare</legend>
+            <Input name='name' label='Name for result' floatingLabel value={this.state.name} onChange={this.handleChange} />
+            <Input name='id' label='ID for result' floatingLabel value={this.state.id} onChange={this.handleChange} />
+            <Button variant='raised' type='submit' disabled={this.state.isLoading}>Add to compare</Button>
+          </Form>
+          <Loading loading={this.state.isLoading} />
+          {
             this.state.data.length > 0 ? <Comparison data={generateComparison(this.state.data)} /> : null
           }
-            <footer>
-              <div className='mui-container mui--text-center'>
-                <a href='https://github.com/zrrrzzt/bigfive-compare' target='_blank'>bigfive-compare</a><br />
-              Made with ❤ by <a href='https://github.com/zrrrzzt/' target='_blank'>zrrrzzt</a> and <a href='https://github.com/maccyber' target='_blank'>maccyber</a>
-              </div>
-            </footer>
-          </div>
         </Container>
+        <footer className='mui-container mui--text-center'>
+          <a href='https://github.com/zrrrzzt/bigfive-compare' target='_blank'>bigfive-compare</a><br />
+              Made with ❤ by <a href='https://github.com/zrrrzzt/' target='_blank'>zrrrzzt</a> and <a href='https://github.com/maccyber' target='_blank'>maccyber</a>
+        </footer>
       </div>
     )
   }
