@@ -36,8 +36,8 @@ export default class Index extends React.Component {
   async componentDidMount () {
     if (this.state.resultId) {
       this.setState({isLoading: true})
-      const comparison = await getComparison(this.state.resultId)
-      const data = await loadResults(comparison.data)
+      const saved = await getComparison(this.state.resultId)
+      const data = await loadResults(saved.comparison)
       this.setState({data: data, isLoading: false})
     }
   }
@@ -65,7 +65,7 @@ export default class Index extends React.Component {
     event.preventDefault()
     this.setState({isLoading: true})
     try {
-      const save = saveComparison(this.state.data)
+      const save = await saveComparison(this.state.data)
       const resultId = save.key
       this.setState({resultId: resultId, isLoading: false})
       window.location = `?id=${resultId}`
