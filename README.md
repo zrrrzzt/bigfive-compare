@@ -20,7 +20,7 @@ Compare results from bigfive personality tests
 
 ## About
 
-Created with <3 by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber)
+Created with :heart: by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber)
 
 ![Robohash image of zrrrzzt](https://robots.kebabstudios.party/zrrrzzt.png "Robohash image of zrrrzzt") 
 ![Robohash image of maccyber](https://robots.kebabstudios.party/maccyber.png "Robohash image of maccyber")
