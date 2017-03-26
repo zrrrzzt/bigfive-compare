@@ -1,6 +1,7 @@
 {
   "rules": [
     { "pathname": "/api/store", "dest": "loki.storage.mikrotjeneste.no" },
-    { "dest": "bigfive-compare-yaunivcztu.now.sh" }
+    { "pathname": "/api/generator", "dest": "generator.bigfive.maccyber.io" },
+    { "dest": "frontpage.compare.bigfive.mikrotjeneste.win" }
   ]
 }

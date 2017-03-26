@@ -39,7 +39,7 @@
     "standard": "9.0.2"
   },
   "now": {
-    "alias": "compare.bigfive.mikrotjeneste.win",
+    "alias": "frontpage.compare.bigfive.mikrotjeneste.win",
     "env": {
       "NODE_ENV": "production"
     },
