@@ -7,7 +7,7 @@ import Input from 'muicss/lib/react/input'
 import Button from 'muicss/lib/react/button'
 import Head from '../components/head'
 import Loading from '../components/loading'
-import Comparison from '../components/comparison'
+import Comparison from '../components/comparison.js'
 const getResult = require('../lib/get-result')
 const getComparison = require('../lib/get-comparison')
 const loadResults = require('../lib/load-results')
@@ -21,6 +21,7 @@ export default class Index extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSave = this.handleSave.bind(this)
+    this.handleToggle = this.handleToggle.bind(this)
   }
 
   static async getInitialProps (ctx) {
@@ -29,7 +30,8 @@ export default class Index extends React.Component {
       name: '',
       id: '',
       resultId: ctx.query.id || false,
-      isLoading: false
+      isLoading: false,
+      show: 'domains'
     }
   }
 
@@ -38,7 +40,9 @@ export default class Index extends React.Component {
       this.setState({isLoading: true})
       const saved = await getComparison(this.state.resultId)
       const data = await loadResults(saved.comparison)
-      this.setState({data: data, isLoading: false})
+      const comparisons = generateComparison(data)
+      const show = this.state.show
+      this.setState({data: data, isLoading: false, comparison: comparisons[show], comparisons: comparisons})
     }
   }
 
@@ -58,7 +62,9 @@ export default class Index extends React.Component {
     const prevData = this.state.data
     const data = await getResult(this.state.id)
     prevData.push({name: this.state.name, id: this.state.id, data: data})
-    this.setState({name: '', id: '', isLoading: false, data: prevData})
+    const comparisons = generateComparison(prevData)
+    const show = this.state.show
+    this.setState({name: '', id: '', isLoading: false, data: prevData, comparison: comparisons[show], comparisons: comparisons})
   }
 
   async handleSave (event) {
@@ -75,6 +81,13 @@ export default class Index extends React.Component {
     }
   }
 
+  handleToggle (event) {
+    event.preventDefault()
+    const comparisons = this.state.comparisons
+    const show = this.state.show === 'domains' ? 'facets' : 'domains'
+    this.setState({show: show, comparison: comparisons[show]})
+  }
+
   render () {
     return (
       <div>
@@ -88,10 +101,13 @@ export default class Index extends React.Component {
           </Form>
           <Loading loading={this.state.isLoading} />
           {
-            this.state.data.length > 0 ? <Comparison data={generateComparison(this.state.data)} /> : null
+            this.state.data.length > 0 ? <Comparison title={this.state.comparison.title} headers={this.state.comparison.headers} scores={this.state.comparison.scores} /> : null
           }
           {
-            this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleSave} disabled={this.state.isLoading}>Save comparison</Button> : null
+            this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleToggle}>Show {this.state.show === 'domains' ? 'facets' : 'domains'}</Button> : null
+          }
+          {
+            this.state.data.length > 0 ? <Button variant='raised' className='mui--pull-right' onClick={this.handleSave} disabled={this.state.isLoading}>Save comparison</Button> : null
           }
         </Container>
         <footer className='mui-container mui--text-center'>

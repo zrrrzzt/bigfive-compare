@@ -1,7 +1,7 @@
 {
   "rules": [
-    { "pathname": "/api/store", "dest": "loki.storage.mikrotjeneste.no" },
+    { "pathname": "/api/store", "dest": "storage.bigfive.world" },
     { "pathname": "/api/generator", "dest": "generator.bigfive.maccyber.io" },
-    { "dest": "frontpage.compare.bigfive.mikrotjeneste.win" }
+    { "dest": "frontpage.compare.bigfive.world" }
   ]
 }

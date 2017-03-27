@@ -18,3 +18,7 @@ footer {
     height: 100px;
     padding-top: 35px;
 }
+
+.chart-container {
+    clear-after: both;
+}
