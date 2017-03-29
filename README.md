@@ -14,6 +14,10 @@ Compare results from bigfive personality tests
 - [micro-bigfive-results](https://github.com/maccyber/micro-bigfive-results) Webservice that returns bigfive informative test results
 - [micro-bigfive-save](https://github.com/maccyber/micro-bigfive-save) Webservice that stores bigfive answers
 
+## Screenshot
+
+![Screenshot](http://bildr.no/image/TGpiVDc0.jpeg "Screenshot of bigfive-compare") 
+
 ## License
 
 [MIT](LICENSE)
