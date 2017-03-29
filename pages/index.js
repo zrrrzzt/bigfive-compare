@@ -71,12 +71,11 @@ export default class Index extends React.Component {
     event.preventDefault()
     this.setState({isLoading: true})
     try {
-      const save = await saveComparison(this.state.data)
-      const resultId = save.key
+      const save = await saveComparison({id: this.state.resultId, comparisons: this.state.data})
+      const resultId = save.id
       this.setState({resultId: resultId, isLoading: false})
       window.location = `?id=${resultId}`
     } catch (error) {
-      console.error(error)
       this.setState({isLoading: false})
     }
   }
