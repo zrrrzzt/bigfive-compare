@@ -1,14 +1,13 @@
-
-# Setting the base to nodejs 7
-FROM mhart/alpine-node:7
+# Setting the base to nodejs 7.7.4
+FROM node:7.7.4-alpine
 
 # Maintainer
-MAINTAINER Jonas Enge
+MAINTAINER Geir Gåsodden
 
 #### Begin setup ####
 
-# Extra tools for native dependencies
-RUN apk add --no-cache make gcc g++ python
+# Installs git
+RUN apk add --update --no-cache git
 
 # Bundle app source
 COPY . /src
@@ -16,21 +15,11 @@ COPY . /src
 # Change working directory
 WORKDIR "/src"
 
-# Env variables
-ENV SERVER_PORT 3000
-ENV DATA_URL https://questions.bigfive.maccyber.io/getQuestions
-ENV GENERATOR_URL https://generator.bigfive.maccyber.io
-ENV DEFAULT_LANG en
-ENV DEFAULT_LIMIT 5
-ENV DEFAULT_TEST 50
-
 # Install dependencies
 RUN npm install --production
 
-RUN npm run build
-
 # Expose 3000
-EXPOSE ${SERVER_PORT}
+EXPOSE 3000
 
 # Startup
-ENTRYPOINT npm run start
+ENTRYPOINT npm start
