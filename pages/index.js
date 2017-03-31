@@ -1,6 +1,8 @@
 'use strict'
 
+const { parse } = require('url')
 import React from 'react'
+import Router from 'next/router'
 import Container from 'muicss/lib/react/container'
 import Form from 'muicss/lib/react/form'
 import Input from 'muicss/lib/react/input'
@@ -60,8 +62,10 @@ export default class Index extends React.Component {
     event.preventDefault()
     this.setState({isLoading: true})
     const prevData = this.state.data
-    const data = await getResult(this.state.id)
-    prevData.push({name: this.state.name, id: this.state.id, data: data})
+    const input = parse(this.state.id, true).query
+    const id = input.id || this.state.id
+    const data = await getResult(id)
+    prevData.push({name: this.state.name, id: id, data: data})
     const comparisons = generateComparison(prevData)
     const show = this.state.show
     this.setState({name: '', id: '', isLoading: false, data: prevData, comparison: comparisons[show], comparisons: comparisons})
@@ -74,7 +78,7 @@ export default class Index extends React.Component {
       const save = await saveComparison({id: this.state.resultId, comparisons: this.state.data})
       const resultId = save.id
       this.setState({resultId: resultId, isLoading: false})
-      window.location = `?id=${resultId}`
+      Router.push({pathname: '/', query: {id: resultId}})
     } catch (error) {
       this.setState({isLoading: false})
     }
@@ -95,7 +99,7 @@ export default class Index extends React.Component {
           <Form onSubmit={this.handleSubmit}>
             <legend>Results to compare</legend>
             <Input name='name' label='Name for result' floatingLabel value={this.state.name} onChange={this.handleChange} />
-            <Input name='id' label='ID for result' floatingLabel value={this.state.id} onChange={this.handleChange} />
+            <Input name='id' label='ID or URL for result' floatingLabel value={this.state.id} onChange={this.handleChange} />
             <Button variant='raised' type='submit' disabled={this.state.isLoading}>Add to compare</Button>
           </Form>
           <Loading loading={this.state.isLoading} />
