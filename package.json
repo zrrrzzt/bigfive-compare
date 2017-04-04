@@ -50,7 +50,7 @@
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "now-deploy": "test && now --npm -E production.env && now alias"
+    "now-deploy": "npm test && now --npm -E production.env && now alias"
   },
   "devDependencies": {
     "ava": "0.18.2",
