@@ -1,6 +1,5 @@
 'use strict'
 
-const { parse } = require('url')
 import React from 'react'
 import Router from 'next/router'
 import Container from 'muicss/lib/react/container'
@@ -10,6 +9,7 @@ import Button from 'muicss/lib/react/button'
 import Head from '../components/head'
 import Loading from '../components/loading'
 import Comparison from '../components/comparison.js'
+const { parse } = require('url')
 const getResult = require('../lib/get-result')
 const getComparison = require('../lib/get-comparison')
 const loadResults = require('../lib/load-results')
