@@ -8,7 +8,7 @@ export default () => (
     <Head>
       <title>bigfive compare</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      <link href='//cdn.muicss.com/mui-0.9.12/css/mui.min.css' rel='stylesheet' type='text/css' media='screen' />
+      <link href='//cdn.muicss.com/mui-0.9.15/css/mui.min.css' rel='stylesheet' type='text/css' media='screen' />
       <link href='static/css/app.css' rel='stylesheet' type='text/css' media='screen' />
       <link rel='apple-touch-icon' sizes='152x152' href='static/images/icons/apple-touch-icon.png' />
       <link rel='icon' type='image/png' href='static/images/icons/favicon-32x32.png' sizes='32x32' />
