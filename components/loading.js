@@ -1,4 +1,4 @@
-import React from 'react'
+'use strict'
 
 export default ({ loading }) => (
   <div>
