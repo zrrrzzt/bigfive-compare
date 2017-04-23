@@ -64,7 +64,7 @@
     "bson-objectid": "1.1.5",
     "jws": "3.1.4",
     "muicss": "0.9.15",
-    "next": "2.1.1",
+    "next": "2.2.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-google-charts": "1.5.4-alpha.1"
