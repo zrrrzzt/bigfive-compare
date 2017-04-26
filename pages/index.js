@@ -9,12 +9,15 @@ import Button from 'muicss/lib/react/button'
 import Head from '../components/head'
 import Loading from '../components/loading'
 import Comparison from '../components/comparison.js'
+import Profile from '../components/Profile'
 const { parse } = require('url')
+const getProfile = require('../lib/get-profile')
 const getResult = require('../lib/get-result')
 const getComparison = require('../lib/get-comparison')
 const loadResults = require('../lib/load-results')
 const generateComparison = require('../lib/generate-comparison')
 const saveComparison = require('../lib/save-comparison')
+const saveToProfile = require('../lib/save-to-profile')
 
 export default class Index extends React.Component {
   constructor (props) {
@@ -22,18 +25,22 @@ export default class Index extends React.Component {
     this.state = Object.assign(this.props)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleSave = this.handleSave.bind(this)
+    this.handleSaveToProfile = this.handleSaveToProfile.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
   }
 
   static async getInitialProps (ctx) {
+    const profile = getProfile(ctx.req)
+    // const profile = require('../test/data/profile.json')
+
     return {
       data: [],
       name: '',
       id: '',
       resultId: ctx.query.id || false,
       isLoading: false,
-      show: 'domains'
+      show: 'domains',
+      profile: profile
     }
   }
 
@@ -66,20 +73,30 @@ export default class Index extends React.Component {
     const id = input.id || this.state.id
     const data = await getResult(id)
     prevData.push({name: this.state.name, id: id, data: data})
+
+    // Saves changes
+    try {
+      const save = await saveComparison({id: this.state.resultId, comparisons: prevData})
+      const resultId = save.id
+      this.setState({resultId: resultId})
+      Router.push({pathname: '/', query: {id: resultId}})
+    } catch (error) {
+      this.setState({isLoading: false})
+    }
+
     const comparisons = generateComparison(prevData)
     const show = this.state.show
     this.setState({name: '', id: '', isLoading: false, data: prevData, comparison: comparisons[show], comparisons: comparisons})
   }
 
-  async handleSave (event) {
+  async handleSaveToProfile (event) {
     event.preventDefault()
     this.setState({isLoading: true})
     try {
-      const save = await saveComparison({id: this.state.resultId, comparisons: this.state.data})
-      const resultId = save.id
-      this.setState({resultId: resultId, isLoading: false})
-      Router.push({pathname: '/', query: {id: resultId}})
+      await saveToProfile(this.state)
+      this.setState({isLoading: false})
     } catch (error) {
+      console.error(error)
       this.setState({isLoading: false})
     }
   }
@@ -96,6 +113,7 @@ export default class Index extends React.Component {
       <div>
         <Head />
         <Container fluid>
+          <Profile profile={this.state.profile} />
           <Form onSubmit={this.handleSubmit}>
             <legend>Results to compare</legend>
             <Input name='name' label='Name for result' floatingLabel value={this.state.name} onChange={this.handleChange} />
@@ -110,7 +128,7 @@ export default class Index extends React.Component {
             this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleToggle}>Show {this.state.show === 'domains' ? 'facets' : 'domains'}</Button> : null
           }
           {
-            this.state.data.length > 0 ? <Button variant='raised' className='mui--pull-right' onClick={this.handleSave} disabled={this.state.isLoading}>Save comparison</Button> : null
+            this.state.profile && this.state.resultId ? <Button variant='raised' className='mui--pull-right' onClick={this.handleSaveToProfile} disabled={this.state.isLoading}>Save to profile</Button> : null
           }
         </Container>
         <footer className='mui-container mui--text-center'>
