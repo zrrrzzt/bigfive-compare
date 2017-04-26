@@ -3,6 +3,6 @@
     { "pathname": "/api/store", "dest": "compares.save.bigfive.world" },
     { "pathname": "/api/profile", "dest": "profiles.save.bigfive.world" },
     { "pathname": "/api/generator", "dest": "generator.bigfive.maccyber.io" },
-    { "dest": "bigfive-compare-yjcwxlefof.now.sh" }
+    { "dest": "bigfive-compare-ufnxlsmlcr.now.sh" }
   ]
 }

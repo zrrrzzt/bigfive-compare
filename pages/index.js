@@ -73,6 +73,10 @@ export default class Index extends React.Component {
     const data = await getResult(id)
     prevData.push({name: this.state.name, id: id, data: data})
 
+    const comparisons = generateComparison(prevData)
+    const show = this.state.show
+    this.setState({name: '', id: '', isLoading: false, data: prevData, comparison: comparisons[show], comparisons: comparisons})
+
     // Saves changes
     try {
       const save = await saveComparison({id: this.state.resultId, comparisons: prevData})
@@ -80,12 +84,8 @@ export default class Index extends React.Component {
       this.setState({resultId: resultId})
       Router.push({pathname: '/', query: {id: resultId}})
     } catch (error) {
-      this.setState({isLoading: false})
+      console.error(error)
     }
-
-    const comparisons = generateComparison(prevData)
-    const show = this.state.show
-    this.setState({name: '', id: '', isLoading: false, data: prevData, comparison: comparisons[show], comparisons: comparisons})
   }
 
   async handleSaveToProfile (event) {
