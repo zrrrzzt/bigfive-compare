@@ -93,8 +93,8 @@ export default class Index extends React.Component {
     event.preventDefault()
     this.setState({isLoading: true})
     try {
-      await saveToProfile(this.state)
-      this.setState({isLoading: false})
+      const data = await saveToProfile(this.state)
+      this.setState({isLoading: false, savedToProfileId: data.id})
     } catch (error) {
       console.error(error)
       this.setState({isLoading: false})
