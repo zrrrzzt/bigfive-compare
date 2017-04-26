@@ -31,7 +31,6 @@ export default class Index extends React.Component {
 
   static async getInitialProps (ctx) {
     const profile = getProfile(ctx.req)
-    // const profile = require('../test/data/profile.json')
 
     return {
       data: [],
