@@ -121,7 +121,7 @@ export default class Index extends React.Component {
           </Form>
           <Loading loading={this.state.isLoading} />
           {
-            this.state.data.length > 0 ? <Comparison title={this.state.comparison.title} headers={this.state.comparison.headers} scores={this.state.comparison.scores} /> : null
+            this.state.data.length > 0 ? <Comparison {...this.state.comparison} /> : null
           }
           {
             this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleToggle}>Show {this.state.show === 'domains' ? 'facets' : 'domains'}</Button> : null

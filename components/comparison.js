@@ -2,7 +2,7 @@
 
 import { Chart } from 'react-google-charts'
 
-export default (props) => (
+export default props => (
   <div className='chart-container'>
     <Chart
       chartType='LineChart'
