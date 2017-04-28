@@ -35,7 +35,9 @@
     "node": ">=7.9.0"
   },
   "now": {
-    "alias": "frontpage.compare.bigfive.world",
+    "alias": [
+      "frontpage.compare.bigfive.world"
+    ],
     "env": {
       "NODE_ENV": "production"
     },
