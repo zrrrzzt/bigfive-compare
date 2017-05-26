@@ -5,7 +5,7 @@ import { Chart } from 'react-google-charts'
 export default props => (
   <div className='chart-container'>
     <Chart
-      chartType='LineChart'
+      chartType='ColumnChart'
       columns={props.headers}
       rows={props.scores}
       options={{title: props.title}}
