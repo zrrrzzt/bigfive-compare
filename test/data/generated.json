@@ -1,0 +1,234 @@
+{
+  "domains": {
+    "title": "Domains",
+    "headers": [
+      {
+        "label": "domain",
+        "type": "string"
+      },
+      {
+        "label": "Geir",
+        "type": "number"
+      }
+    ],
+    "scores": [
+      [
+        "Nevrotisisme",
+        88
+      ],
+      [
+        "Ekstroversjon",
+        59
+      ],
+      [
+        "Åpenhet for erfaringer",
+        109
+      ],
+      [
+        "Medmenneskelighet",
+        79
+      ],
+      [
+        "Planmessighet",
+        107
+      ]
+    ]
+  },
+  "facets": {
+    "N": {
+      "title": "Facets N",
+      "headers": [
+        {
+          "label": "facet",
+          "type": "string"
+        },
+        {
+          "label": "Geir",
+          "type": "number"
+        }
+      ],
+      "scores": [
+        [
+          "Angst",
+          13
+        ],
+        [
+          "Sinne",
+          9
+        ],
+        [
+          "Depresjon",
+          20
+        ],
+        [
+          "Selvbevissthet",
+          15
+        ],
+        [
+          "Impulsivitet",
+          18
+        ],
+        [
+          "Sårbarhet",
+          13
+        ]
+      ]
+    },
+    "E": {
+      "title": "Facets E",
+      "headers": [
+        {
+          "label": "facet",
+          "type": "string"
+        },
+        {
+          "label": "Geir",
+          "type": "number"
+        }
+      ],
+      "scores": [
+        [
+          "Vennlighet",
+          5
+        ],
+        [
+          "Sosiabilitet",
+          4
+        ],
+        [
+          "Selvmarkering",
+          16
+        ],
+        [
+          "Aktivitet",
+          15
+        ],
+        [
+          "Spennings-søking",
+          11
+        ],
+        [
+          "Positive følelser",
+          8
+        ]
+      ]
+    },
+    "O": {
+      "title": "Facets O",
+      "headers": [
+        {
+          "label": "facet",
+          "type": "string"
+        },
+        {
+          "label": "Geir",
+          "type": "number"
+        }
+      ],
+      "scores": [
+        [
+          "Fantasi",
+          20
+        ],
+        [
+          "Estetikk",
+          20
+        ],
+        [
+          "Følelser",
+          16
+        ],
+        [
+          "Eventyrlyst",
+          17
+        ],
+        [
+          "Intellekt",
+          20
+        ],
+        [
+          " Liberale verdier",
+          16
+        ]
+      ]
+    },
+    "A": {
+      "title": "Facets A",
+      "headers": [
+        {
+          "label": "facet",
+          "type": "string"
+        },
+        {
+          "label": "Geir",
+          "type": "number"
+        }
+      ],
+      "scores": [
+        [
+          "Tillit",
+          4
+        ],
+        [
+          "Moral",
+          20
+        ],
+        [
+          "Altruisme",
+          12
+        ],
+        [
+          "Føyelighet",
+          19
+        ],
+        [
+          "Beskjedenhet",
+          10
+        ],
+        [
+          "Følsomhet",
+          14
+        ]
+      ]
+    },
+    "C": {
+      "title": "Facets C",
+      "headers": [
+        {
+          "label": "facet",
+          "type": "string"
+        },
+        {
+          "label": "Geir",
+          "type": "number"
+        }
+      ],
+      "scores": [
+        [
+          "Kompetanse",
+          19
+        ],
+        [
+          "Orden",
+          17
+        ],
+        [
+          "Pliktoppfyllenhet",
+          15
+        ],
+        [
+          "Prestasjonsstreben",
+          20
+        ],
+        [
+          "Selvdisiplin",
+          19
+        ],
+        [
+          "Betenksomhet",
+          17
+        ]
+      ]
+    }
+  }
+}

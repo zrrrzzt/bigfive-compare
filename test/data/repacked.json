@@ -1,0 +1,120 @@
+{
+  "domains": {
+    "headers": [
+      "Nevrotisisme",
+      "Ekstroversjon",
+      "Åpenhet for erfaringer",
+      "Medmenneskelighet",
+      "Planmessighet"
+    ],
+    "scores": [
+      88,
+      59,
+      109,
+      79,
+      107
+    ]
+  },
+  "facets": {
+    "N": {
+      "domain": "N",
+      "title": "Nevrotisisme",
+      "headers": [
+        "Angst",
+        "Sinne",
+        "Depresjon",
+        "Selvbevissthet",
+        "Impulsivitet",
+        "Sårbarhet"
+      ],
+      "scores": [
+        13,
+        9,
+        20,
+        15,
+        18,
+        13
+      ]
+    },
+    "E": {
+      "domain": "E",
+      "title": "Ekstroversjon",
+      "headers": [
+        "Vennlighet",
+        "Sosiabilitet",
+        "Selvmarkering",
+        "Aktivitet",
+        "Spennings-søking",
+        "Positive følelser"
+      ],
+      "scores": [
+        5,
+        4,
+        16,
+        15,
+        11,
+        8
+      ]
+    },
+    "O": {
+      "domain": "O",
+      "title": "Åpenhet for erfaringer",
+      "headers": [
+        "Fantasi",
+        "Estetikk",
+        "Følelser",
+        "Eventyrlyst",
+        "Intellekt",
+        " Liberale verdier"
+      ],
+      "scores": [
+        20,
+        20,
+        16,
+        17,
+        20,
+        16
+      ]
+    },
+    "A": {
+      "domain": "A",
+      "title": "Medmenneskelighet",
+      "headers": [
+        "Tillit",
+        "Moral",
+        "Altruisme",
+        "Føyelighet",
+        "Beskjedenhet",
+        "Følsomhet"
+      ],
+      "scores": [
+        4,
+        20,
+        12,
+        19,
+        10,
+        14
+      ]
+    },
+    "C": {
+      "domain": "C",
+      "title": "Planmessighet",
+      "headers": [
+        "Kompetanse",
+        "Orden",
+        "Pliktoppfyllenhet",
+        "Prestasjonsstreben",
+        "Selvdisiplin",
+        "Betenksomhet"
+      ],
+      "scores": [
+        19,
+        17,
+        15,
+        20,
+        19,
+        17
+      ]
+    }
+  }
+}
