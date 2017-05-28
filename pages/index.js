@@ -10,6 +10,7 @@ import Head from '../components/head'
 import Loading from '../components/loading'
 import Comparison from '../components/comparison.js'
 import Profile from '../components/Profile'
+import FacetSwitcher from '../components/FacetSwitcher'
 const { parse } = require('url')
 const getProfile = require('../lib/get-profile')
 const getResult = require('../lib/get-result')
@@ -102,9 +103,10 @@ export default class Index extends React.Component {
 
   handleToggle (event) {
     event.preventDefault()
+    const facet = event.target.dataset.facet
     const comparisons = this.state.comparisons
-    const show = this.state.show === 'domains' ? 'facets' : 'domains'
-    this.setState({show: show, comparison: comparisons[show]})
+    const comparison = facet ? comparisons.facets[facet] : comparisons['domains']
+    this.setState({comparison: comparison})
   }
 
   render () {
@@ -124,7 +126,7 @@ export default class Index extends React.Component {
             this.state.data.length > 0 ? <Comparison {...this.state.comparison} /> : null
           }
           {
-            this.state.data.length > 0 ? <Button variant='raised' onClick={this.handleToggle}>Show {this.state.show === 'domains' ? 'facets' : 'domains'}</Button> : null
+            this.state.data.length > 0 ? <FacetSwitcher facets={this.state.comparisons.facets} clickHandler={this.handleToggle} /> : null
           }
           {
             this.state.profile && this.state.resultId ? <Button variant='raised' className='mui--pull-right' onClick={this.handleSaveToProfile} disabled={this.state.isLoading}>Save to profile</Button> : null
