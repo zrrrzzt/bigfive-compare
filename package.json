@@ -69,7 +69,7 @@
     "muicss": "0.9.16",
     "next": "^3.0.0-beta6",
     "react": "15.6.1",
-    "react-dom": "15.5.4",
+    "react-dom": "15.6.1",
     "react-google-charts": "1.5.5",
     "simple-encryptor": "1.1.0"
   }
