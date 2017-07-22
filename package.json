@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/bigfive-compare",
   "engines": {
-    "node": ">=8.1.4"
+    "node": ">=8.2.1"
   },
   "now": {
     "alias": [
@@ -66,8 +66,8 @@
     "bson-objectid": "1.1.5",
     "cookie": "0.3.1",
     "jws": "3.1.4",
-    "muicss": "0.9.18",
-    "next": "3.0.1-beta.16",
+    "muicss": "0.9.20",
+    "next": "3.0.1-beta.18",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-google-charts": "1.5.5",
