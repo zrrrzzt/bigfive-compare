@@ -112,12 +112,14 @@ export default class Index extends React.Component {
     const facet = event.target.dataset.facet
     const comparisons = this.state.comparisons
     const comparison = facet ? comparisons.facets[facet] : comparisons['domains']
-    this.setState({comparison: comparison})
+    const show = facet || 'domains'
+    this.setState({comparison: comparison, show: show})
   }
 
   handleFilter (event) {
     event.preventDefault()
     let filtered = []
+    const show = this.state.show
     const comparisonId = event.target.dataset.comparison
     let prevFilter = this.state.filteredIds
     if (prevFilter.includes(comparisonId)) {
@@ -128,7 +130,8 @@ export default class Index extends React.Component {
     }
     const data = this.state.data.filter(data => filtered.includes(data.id))
     const comparisons = generateComparison(data)
-    this.setState({filteredIds: filtered, comparisons: comparisons})
+    const comparison = show === 'domains' ? comparisons['domains'] : comparisons.facets[show]
+    this.setState({filteredIds: filtered, comparisons: comparisons, comparison: comparison})
   }
   render () {
     return (
@@ -147,7 +150,7 @@ export default class Index extends React.Component {
             this.state.data.length > 0 ? <Comparison {...this.state.comparison} /> : null
           }
           {
-            this.state.data.length > 0 ? <FacetSwitcher facets={this.state.comparisons.facets} clickHandler={this.handleToggle} /> : null
+            this.state.data.length > 0 ? <FacetSwitcher facets={this.state.comparisons.facets} show={this.state.show} clickHandler={this.handleToggle} /> : null
           }
           {
             this.state.profile && this.state.resultId ? <Button variant='raised' className='mui--pull-right' onClick={this.handleSaveToProfile} disabled={this.state.isLoading}>Save to profile</Button> : null
