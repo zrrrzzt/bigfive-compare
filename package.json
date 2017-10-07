@@ -71,6 +71,6 @@
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-google-charts": "1.5.5",
-    "simple-encryptor": "1.1.0"
+    "simple-encryptor": "1.1.1"
   }
 }
