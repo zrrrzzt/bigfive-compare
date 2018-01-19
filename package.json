@@ -62,7 +62,7 @@
     "standard": "10.0.3"
   },
   "dependencies": {
-    "axios": "0.17.0",
+    "axios": "0.17.1",
     "bson-objectid": "1.2.2",
     "cookie": "0.3.1",
     "jws": "3.1.4",
