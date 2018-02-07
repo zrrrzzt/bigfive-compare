@@ -67,7 +67,7 @@
     "cookie": "0.3.1",
     "jws": "3.1.4",
     "muicss": "0.9.36",
-    "next": "4.2.3",
+    "next": "5.0.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-google-charts": "1.5.5",
