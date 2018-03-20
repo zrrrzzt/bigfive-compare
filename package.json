@@ -70,7 +70,7 @@
     "next": "5.0.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-google-charts": "1.5.5",
+    "react-google-charts": "1.5.7",
     "simple-encryptor": "1.2.0"
   }
 }
