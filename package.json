@@ -71,6 +71,6 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-google-charts": "3.0.8",
-    "simple-encryptor": "1.4.0"
+    "simple-encryptor": "2.0.0"
   }
 }
