@@ -55,7 +55,7 @@
     "now-deploy": "npm test && now --npm -E production.env && now alias"
   },
   "devDependencies": {
-    "ava": "1.2.0",
+    "ava": "1.2.1",
     "coveralls": "3.0.2",
     "nsp": "3.2.1",
     "nyc": "13.2.0",
