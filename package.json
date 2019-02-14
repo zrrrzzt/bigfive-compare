@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/bigfive-compare",
   "engines": {
-    "node": ">=8.2.1"
+    "node": ">=8.15.0"
   },
   "now": {
     "alias": [
