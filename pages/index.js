@@ -49,13 +49,13 @@ export default class Index extends React.Component {
 
   async componentDidMount () {
     if (this.state.resultId) {
-      this.setState({isLoading: true})
+      this.setState({ isLoading: true })
       const saved = await getComparison(this.state.resultId)
       const data = await loadResults(saved.comparison)
       const filtered = data.map(item => item.id)
       const comparisons = generateComparison(data)
       const show = this.state.show
-      this.setState({data: data, filteredIds: filtered, isLoading: false, comparison: comparisons[show], comparisons: comparisons})
+      this.setState({ data: data, filteredIds: filtered, isLoading: false, comparison: comparisons[show], comparisons: comparisons })
     }
   }
 
@@ -71,25 +71,25 @@ export default class Index extends React.Component {
 
   async handleSubmit (event) {
     event.preventDefault()
-    this.setState({isLoading: true})
+    this.setState({ isLoading: true })
     const prevData = this.state.data
     const prevFilter = this.state.filteredIds
     const input = parse(this.state.id, true).query
     const id = input.id || this.state.id
     const data = await getResult(id)
-    prevData.push({name: this.state.name, id: id, data: data})
+    prevData.push({ name: this.state.name, id: id, data: data })
     prevFilter.push(id)
 
     const comparisons = generateComparison(prevData)
     const show = this.state.show
-    this.setState({name: '', id: '', isLoading: false, data: prevData, filteredIds: prevFilter, comparison: comparisons[show], comparisons: comparisons})
+    this.setState({ name: '', id: '', isLoading: false, data: prevData, filteredIds: prevFilter, comparison: comparisons[show], comparisons: comparisons })
 
     // Saves changes
     try {
-      const save = await saveComparison({id: this.state.resultId, comparisons: prevData})
+      const save = await saveComparison({ id: this.state.resultId, comparisons: prevData })
       const resultId = save.id
-      this.setState({resultId: resultId})
-      Router.push({pathname: '/', query: {id: resultId}})
+      this.setState({ resultId: resultId })
+      Router.push({ pathname: '/', query: { id: resultId } })
     } catch (error) {
       console.error(error)
     }
@@ -97,13 +97,13 @@ export default class Index extends React.Component {
 
   async handleSaveToProfile (event) {
     event.preventDefault()
-    this.setState({isLoading: true})
+    this.setState({ isLoading: true })
     try {
       const data = await saveToProfile(this.state)
-      this.setState({isLoading: false, savedToProfileId: data.id})
+      this.setState({ isLoading: false, savedToProfileId: data.id })
     } catch (error) {
       console.error(error)
-      this.setState({isLoading: false})
+      this.setState({ isLoading: false })
     }
   }
 
@@ -113,7 +113,7 @@ export default class Index extends React.Component {
     const comparisons = this.state.comparisons
     const comparison = facet ? comparisons.facets[facet] : comparisons['domains']
     const show = facet || 'domains'
-    this.setState({comparison: comparison, show: show})
+    this.setState({ comparison: comparison, show: show })
   }
 
   handleFilter (event) {
@@ -131,7 +131,7 @@ export default class Index extends React.Component {
     const data = this.state.data.filter(data => filtered.includes(data.id))
     const comparisons = generateComparison(data)
     const comparison = show === 'domains' ? comparisons['domains'] : comparisons.facets[show]
-    this.setState({filteredIds: filtered, comparisons: comparisons, comparison: comparison})
+    this.setState({ filteredIds: filtered, comparisons: comparisons, comparison: comparison })
   }
   render () {
     return (

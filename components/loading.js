@@ -6,7 +6,7 @@ export default ({ loading }) => (
       loading
         ? <span className='loading'>
           <p>
-            <img src='static/images/icons/loading.svg' style={{width: 100}} />
+            <img src='static/images/icons/loading.svg' style={{ width: 100 }} />
           </p>
           <p>
             <big>Retrieving data ...</big></p>
