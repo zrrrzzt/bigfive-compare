@@ -3,6 +3,12 @@
 
 # bigfive-compare
 
+NO LONGER MAINTAINED
+
+Please use [bigfive-web](https://github.com/Alheimsins/bigfive-web) or [b5-web](https://github.com/zrrrzzt/b5-web) for solutions with compare built in
+
+***
+
 Compare results from bigfive personality tests
 
 ## Realated
