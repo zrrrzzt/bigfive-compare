@@ -64,7 +64,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "bson-objectid": "1.2.4",
-    "cookie": "0.3.1",
+    "cookie": "0.4.0",
     "jws": "3.2.2",
     "muicss": "0.9.41",
     "next": "8.1.0",
