@@ -68,8 +68,8 @@
     "jws": "3.2.2",
     "muicss": "0.9.43",
     "next": "9.0.7",
-    "react": "16.10.0",
-    "react-dom": "16.10.0",
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
     "react-google-charts": "3.0.15",
     "simple-encryptor": "3.0.0"
   }
